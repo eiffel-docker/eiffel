@@ -25,6 +25,7 @@ RUN export uid=1000 gid=1000 && \
 
 USER eiffel
 ENV HOME /home/eiffel
+ADD ./home/eiffel/.subversion /home/eiffel/.subversion
 RUN mkdir -p /home/eiffel/trunk
 WORKDIR /home/eiffel/trunk
 RUN svn checkout https://svn.eiffel.com/eiffelstudio/trunk/Src Src
