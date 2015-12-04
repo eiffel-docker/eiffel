@@ -15,6 +15,7 @@ ENV EIFFEL_LIBRARY /eiffel
 ENV PATH $PATH:$ISE_EIFFEL/studio/spec/$ISE_PLATFORM/bin:$ISE_EIFFEL/tools/spec/$ISE_PLATFORM/bin:$ISE_EIFFEL/library/gobo/spec/$ISE_PLATFORM/bin
 
 RUN apt-get install -y libxtst-dev libgtk2.0-dev
+RUN apt-get install -y xterm
 
 RUN export uid=1000 gid=1000 && \
     mkdir -p /home/eiffel && \
@@ -28,6 +29,6 @@ RUN mkdir -p /home/eiffel/trunk
 WORKDIR /home/eiffel/trunk
 RUN svn checkout https://svn.eiffel.com/eiffelstudio/trunk/Src Src
 WORKDIR /home/eiffel/trunk/Src
-CMD geant prepare
+RUN geant prepare
 WORKDIR /home/eiffel
 CMD xterm
