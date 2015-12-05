@@ -7,6 +7,7 @@ ENV PATH $PATH:$ISE_EIFFEL/studio/spec/$ISE_PLATFORM/bin:$ISE_EIFFEL/tools/spec/
 
 USER root
 RUN apt-get install -y xterm
+RUN apt-get install -y subversion git-all
 
 USER eiffel
 ENV HOME /home/eiffel
