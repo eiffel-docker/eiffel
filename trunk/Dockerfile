@@ -1,4 +1,4 @@
-FROM eiffel:latest
+FROM eiffel
 MAINTAINER Jocelyn Fiat
 
 ENV EIFFEL_SRC /home/eiffel/trunk/Src
