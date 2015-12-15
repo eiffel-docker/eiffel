@@ -1,0 +1,8 @@
+#Iron configuration file
+# notification email are sent from the admin email address
+
+#admin.email.from=no-reply@eiffel.org
+admin.email.from=no-reply@eiffel.org
+
+# Log level (for now unused)
+log.level=0
