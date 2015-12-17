@@ -2,7 +2,7 @@ Docker containers for Eiffel Programming Language:
 
 # https://hub.docker.com/r/eiffel/eiffel/ with tags 
     -  "latest" or "15.08" which is a debian machine with latest official release of EiffelStudio  (15.08 for now)
-    -  "15.11-dev" which is a debian machine with latest "dev" release of EiffelStudio  (15.11.98046 for now)
+    -  "15.11-dev" which is a debian machine with latest "dev" release of EiffelStudio  (15.11.98242 for now)
 
 # https://hub.docker.com/r/eiffel/dev/ with tags
     - "latest" from container "eiffel/eiffel:latest" and additional tools like tmux, subversion, git, vim, ...
