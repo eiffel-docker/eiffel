@@ -10,7 +10,7 @@ RUN apt-get install -y sudo
 RUN sudo adduser eiffel sudo
 RUN echo "eiffel:eiffel" | chpasswd
 
-RUN apt-get install -y xterm
+RUN apt-get install -y xterm tmux
 RUN apt-get install -y subversion git-all
 
 USER eiffel

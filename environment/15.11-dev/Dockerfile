@@ -8,7 +8,6 @@ RUN curl -L https://ftp.eiffel.com/pub/beta/15.11/Eiffel_15.11_gpl_98046-linux-x
 ENV ISE_EIFFEL /usr/local/Eiffel_15.11
 ENV ISE_PLATFORM linux-x86-64
 ENV ISE_LIBRARY $ISE_EIFFEL
-ENV EIFFEL_LIBRARY /eiffel
 ENV PATH $PATH:$ISE_EIFFEL/studio/spec/$ISE_PLATFORM/bin:$ISE_EIFFEL/tools/spec/$ISE_PLATFORM/bin:$ISE_EIFFEL/library/gobo/spec/$ISE_PLATFORM/bin
 
 

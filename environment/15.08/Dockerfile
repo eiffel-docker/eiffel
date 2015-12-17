@@ -8,7 +8,6 @@ RUN curl -L https://ftp.eiffel.com/pub/beta/15.08/Eiffel_15.08_gpl_97862-linux-x
 ENV ISE_EIFFEL /usr/local/Eiffel_15.08
 ENV ISE_PLATFORM linux-x86-64
 ENV ISE_LIBRARY $ISE_EIFFEL
-ENV EIFFEL_LIBRARY /eiffel
 ENV PATH $PATH:$ISE_EIFFEL/studio/spec/$ISE_PLATFORM/bin
 
 RUN apt-get install -y libxtst-dev libgtk2.0-dev
