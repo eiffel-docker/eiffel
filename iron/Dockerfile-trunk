@@ -1,4 +1,4 @@
-FROM eiffel/iron
+FROM eiffel/iron:latest
 MAINTAINER Jocelyn Fiat
 
 RUN /bin/bash $EIF_IRON_DIR/scripts/iron_fill_trunk.sh $EIF_IRON_DIR $EIF_IRON_PORT "ironman" "eiffel123"
