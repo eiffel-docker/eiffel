@@ -14,7 +14,7 @@ RUN apt-get install -y vim
 
 USER eiffel
 ENV HOME /home/eiffel
-ADD ../../inc/home/eiffel/.subversion /home/eiffel/.subversion
+ADD ./home/eiffel/.subversion /home/eiffel/.subversion
 
 RUN iron update
 
