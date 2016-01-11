@@ -1,9 +1,9 @@
-FROM eiffel/dev:trunk
+FROM eiffel/dev
 MAINTAINER Jocelyn Fiat
 LABEL description="									\
 IRON repository service.							\
 To use it:											\
-  docker run -t -i eiffel/devenv:iron-dev			\
+  docker run -t -i eiffel/iron						\
   open a browser on http://localhost:9090/			\
 Iron default credential= ironman:eiffel123			\
 													\
