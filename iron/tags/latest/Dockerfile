@@ -1,4 +1,4 @@
-FROM eiffel/dev:dev
+FROM eiffel/develop:dev
 MAINTAINER Jocelyn Fiat
 LABEL description="									\
 IRON repository service.							\
