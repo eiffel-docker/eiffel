@@ -10,7 +10,6 @@ ENV ISE_PLATFORM linux-x86-64
 ENV ISE_LIBRARY $ISE_EIFFEL
 ENV PATH $PATH:$ISE_EIFFEL/studio/spec/$ISE_PLATFORM/bin:$ISE_EIFFEL/tools/spec/$ISE_PLATFORM/bin:$ISE_EIFFEL/library/gobo/spec/$ISE_PLATFORM/bin
 
-
 RUN apt-get install -y libxtst-dev libgtk2.0-dev
 
 RUN export uid=1000 gid=1000 && \

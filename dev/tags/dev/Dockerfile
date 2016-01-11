@@ -1,4 +1,4 @@
-FROM eiffel/eiffel
+FROM eiffel/eiffel:dev
 MAINTAINER Jocelyn Fiat
 
 ENV PATH $PATH:$ISE_EIFFEL/studio/spec/$ISE_PLATFORM/bin:$ISE_EIFFEL/tools/spec/$ISE_PLATFORM/bin:$ISE_EIFFEL/library/gobo/spec/$ISE_PLATFORM/bin
@@ -14,7 +14,7 @@ RUN apt-get install -y vim
 
 USER eiffel
 ENV HOME /home/eiffel
-ADD ./home/eiffel/.subversion /home/eiffel/.subversion
+ADD ../../inc/home/eiffel/.subversion /home/eiffel/.subversion
 
 RUN iron update
 
