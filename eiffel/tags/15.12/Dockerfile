@@ -2,7 +2,7 @@ FROM debian:latest
 MAINTAINER Jocelyn Fiat
 
 RUN apt-get update && apt-get -y install curl bzip2 make gcc
-RUN curl -L https://ftp.eiffel.com/pub/beta/15.12/Eiffel_15.12_gpl_98308-linux-x86-64.tar.bz2 | tar xj -C /usr/local
+RUN curl -L https://ftp.eiffel.com/pub/beta/15.12/Eiffel_15.12_gpl_98497-linux-x86-64.tar.bz2 | tar xj -C /usr/local
 
 # Define Eiffel environment variables
 ENV ISE_EIFFEL /usr/local/Eiffel_15.12
