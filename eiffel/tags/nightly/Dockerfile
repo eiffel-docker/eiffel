@@ -17,7 +17,8 @@ ENV HOME /home/eiffel
 
 USER eiffel
 RUN mkdir -p /home/eiffel/build && curl -L https://ftp.eiffel.com/pub/beta/nightly/PorterPackage_NIGHTLY.tar | tar x -C /home/eiffel/build
-RUN cd /home/eiffel/build/PorterPackage && ./compile_exes $ISE_PLATFORM
+RUN cd /home/eiffel/build/PorterPackage 
+RUN ./compile_exes $ISE_PLATFORM
 ENV PATH $PATH:$ISE_EIFFEL/studio/spec/$ISE_PLATFORM/bin:$ISE_EIFFEL/tools/spec/$ISE_PLATFORM/bin:$ISE_EIFFEL/library/gobo/spec/$ISE_PLATFORM/bin
 
 USER root
