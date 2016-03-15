@@ -1,7 +1,10 @@
 FROM debian:latest
 MAINTAINER Jocelyn Fiat
 
-RUN apt-get update && apt-get -y install curl bzip2 make gcc libxtst-dev libgtk2.0-dev
+RUN apt-get update \
+	&& apt-get -y install curl bzip2 make gcc libxtst-dev libgtk2.0-dev \
+	&& apt-get clean \
+	&& rm -rf /var/lib/apt/lists/*
 
 RUN export uid=1000 gid=1000 && \
     mkdir -p /home/eiffel && \
@@ -10,17 +13,13 @@ RUN export uid=1000 gid=1000 && \
     chown ${uid}:${gid} -R /home/eiffel
 
 # Define Eiffel environment variables
-ENV ISE_PLATFORM linux-x86-64
-ENV ISE_EIFFEL /usr/local/Eiffel
-ENV ISE_LIBRARY $ISE_EIFFEL
-ENV HOME /home/eiffel
+ENV 	ISE_PLATFORM=linux-x86-64 \
+	ISE_EIFFEL=/home/eiffel/Eiffel \
+	ISE_LIBRARY=$ISE_EIFFEL \
+	PATH=$PATH:$ISE_EIFFEL/studio/spec/$ISE_PLATFORM/bin:$ISE_EIFFEL/tools/spec/$ISE_PLATFORM/bin:$ISE_EIFFEL/library/gobo/spec/$ISE_PLATFORM/bin
+
 
 USER eiffel
-RUN mkdir -p /home/eiffel/build && curl -L https://ftp.eiffel.com/pub/beta/nightly/PorterPackage_NIGHTLY.tar | tar x -C /home/eiffel/build
-RUN cd /home/eiffel/build/PorterPackage && ls -la /home/eiffel/build/* && /home/eiffel/build/PorterPackage/compile_exes $ISE_PLATFORM
-ENV PATH $PATH:$ISE_EIFFEL/studio/spec/$ISE_PLATFORM/bin:$ISE_EIFFEL/tools/spec/$ISE_PLATFORM/bin:$ISE_EIFFEL/library/gobo/spec/$ISE_PLATFORM/bin
+ADD ./src/install_porterpackage.sh /tmp/install_porterpackage.sh
+RUN /bin/bash /tmp/install_porterpackage.sh $ISE_PLATFORM /home/eiffel/build $ISE_EIFFEL
 
-USER root
-RUN mv /home/eiffel/build/PorterPackage/Eiffel_*.* $ISE_EIFFEL
-
-USER eiffel
