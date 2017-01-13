@@ -9,7 +9,7 @@ RUN apt-get update && apt-get install -y \
 		xterm tmux \
 		mysql-client \
 		subversion git-all tig \
-		vim
+		vim \
 	&& sudo adduser eiffel sudo \
 	&& echo "eiffel:eiffel" | chpasswd
 
