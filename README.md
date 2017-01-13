@@ -5,7 +5,7 @@ notes: about tag conventions:
   		and ISE_LIBRARY is set to EIFFEL_SRC (a checkout of EiffelStudio trunk source code).
 
 ## https://hub.docker.com/r/eiffel/eiffel/ with tags 
-   -  "latest" or "15.12" which is a debian machine with latest official release of EiffelStudio  (15.12 for now)
+   -  "latest" which is a debian machine with latest official release of EiffelStudio  (17.01 for now)
    -  "dev" which is a debian machine with latest "dev" release of EiffelStudio  (See ftp://ftp.eiffel.com/pub/beta/nightly/ )
 
 ## https://hub.docker.com/r/eiffel/develop/ with tags
