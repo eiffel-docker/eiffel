@@ -4,15 +4,14 @@ MAINTAINER Jocelyn Fiat
 ENV PATH $PATH:$ISE_EIFFEL/studio/spec/$ISE_PLATFORM/bin:$ISE_EIFFEL/tools/spec/$ISE_PLATFORM/bin:$ISE_EIFFEL/library/gobo/spec/$ISE_PLATFORM/bin
 
 USER root
-RUN apt-get update
-RUN apt-get install -y sudo
-RUN sudo adduser eiffel sudo
-RUN echo "eiffel:eiffel" | chpasswd
-
-RUN apt-get install -y xterm tmux
-RUN apt-get install -y mysql-client
-RUN apt-get install -y subversion git-all tig
-RUN apt-get install -y vim
+RUN apt-get update && apt-get install -y \
+		sudo \
+		xterm tmux \
+		mysql-client \
+		subversion git-all tig \
+		vim
+	&& sudo adduser eiffel sudo \
+	&& echo "eiffel:eiffel" | chpasswd
 
 USER eiffel
 ENV HOME /home/eiffel
@@ -28,9 +27,8 @@ WORKDIR /home/eiffel
 ENV EIFFEL_SRC /home/eiffel/trunk/Src
 ENV ISE_LIBRARY $EIFFEL_SRC
 
-RUN mkdir -p /home/eiffel/trunk
-WORKDIR /home/eiffel/trunk
-RUN svn checkout https://svn.eiffel.com/eiffelstudio/trunk/Src Src
+RUN mkdir -p /home/eiffel/trunk \
+	&& svn checkout https://svn.eiffel.com/eiffelstudio/trunk/Src /home/eiffel/trunk/Src
 WORKDIR $EIFFEL_SRC
 RUN geant prepare
 
