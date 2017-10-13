@@ -8,6 +8,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         gcc \
         libgtk2.0-dev \
         libxtst-dev \
+        libssl-dev \
         make \
     && rm -rf /var/lib/apt/lists/*
 RUN curl -fsSL https://ftp.eiffel.com/pub/download/17.05/Eiffel_17.05_gpl_100416-linux-x86-64.tar.bz2 | tar xj -C /usr/local

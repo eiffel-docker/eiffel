@@ -2,7 +2,7 @@ FROM debian:latest
 MAINTAINER Jocelyn Fiat
 
 RUN apt-get update \
-	&& apt-get -y install curl bzip2 make gcc libxtst-dev libgtk2.0-dev \
+	&& apt-get -y install curl bzip2 make gcc libxtst-dev libgtk2.0-dev libssl-dev \
 	&& apt-get clean \
 	&& rm -rf /var/lib/apt/lists/*
 
