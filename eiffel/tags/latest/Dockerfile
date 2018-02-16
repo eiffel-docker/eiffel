@@ -2,13 +2,13 @@ FROM debian:latest
 MAINTAINER Jocelyn Fiat
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
+        ca-certificates curl \
         bzip2 \
-        ca-certificates \
-        curl \
-        gcc \
-        libgtk2.0-dev \
+        gcc make \
         libxtst-dev \
-        make \
+        libgtk2.0-dev \
+        libssl-dev \
+    && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 RUN curl -fsSL https://ftp.eiffel.com/pub/download/18.01/Eiffel_18.01_gpl_101424-linux-x86-64.tar.bz2 | tar xj -C /usr/local
 
