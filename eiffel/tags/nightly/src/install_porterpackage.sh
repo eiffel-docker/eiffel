@@ -3,6 +3,7 @@
 t_eif_platform=$1
 t_eif_build_dir=$2
 t_eif_install_dir=$3
+t_clean="yes"
 case "$4" in
     "--keep") t_clean="no";;
     "--clean") t_clean="yes";;
@@ -19,6 +20,7 @@ get_porterpackage () {
 	l_build_dir=$2
 
 	echo Get PorterPackage archive from $l_url .
+	echo "curl -s -L $l_url | tar x -C $l_build_dir"
 	curl -s -L $l_url | tar x -C $l_build_dir
 }
 
@@ -59,7 +61,7 @@ mv $t_eif_build_dir/PorterPackage/Eiffel_*.* $t_eif_install_dir
 if [ -d $t_eif_install_dir ]; then
 	echo Clean PorterPackage compilation...
 	cp $t_eif_build_dir/PorterPackage/compile.log $t_eif_install_dir/PorterPackage.log
-	if [ "$t_clean" == "yes" ]; then
+	if [ "$t_clean" = "yes" ]; then
 		echo Deleting PorterPackage directory.
 		rm -rf $t_eif_build_dir
 	fi
