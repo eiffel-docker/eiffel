@@ -1,10 +1,16 @@
 FROM debian:latest
 MAINTAINER Jocelyn Fiat
 
-RUN apt-get update \
-	&& apt-get -y install curl bzip2 make gcc libxtst-dev libgtk2.0-dev libssl-dev \
-	&& apt-get clean \
-	&& rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install -y --no-install-recommends \
+        bzip2 \
+        ca-certificates \
+        curl \
+        gcc \
+        libgtk2.0-dev \
+        libxtst-dev \
+        libssl-dev \
+        make \
+    && rm -rf /var/lib/apt/lists/*
 
 RUN export uid=1000 gid=1000 && \
     mkdir -p /home/eiffel && \
