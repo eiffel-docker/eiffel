@@ -24,6 +24,7 @@ WORKDIR /home/eiffel
 ##################################
 # Custom EiffelStudio trunk dev. #
 ##################################
+
 ENV EIFFEL_SRC /home/eiffel/trunk/Src
 ENV ISE_LIBRARY $EIFFEL_SRC
 

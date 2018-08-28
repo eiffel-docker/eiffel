@@ -5,10 +5,11 @@ ENV PATH $PATH:$ISE_EIFFEL/studio/spec/$ISE_PLATFORM/bin:$ISE_EIFFEL/tools/spec/
 
 USER root
 RUN apt-get update && apt-get install -y \
-		sudo	\
-		xterm tmux	\
-		subversion git-all tig	\
-		vim	\
+		sudo \
+		xterm tmux \
+		mysql-client \
+		subversion git-all tig \
+		vim \
 	&& sudo adduser eiffel sudo \
 	&& echo "eiffel:eiffel" | chpasswd
 
