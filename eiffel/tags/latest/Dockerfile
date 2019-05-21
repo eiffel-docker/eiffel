@@ -8,13 +8,12 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         libxtst-dev \
         libgtk2.0-dev \
         libssl-dev \
-        make \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
-RUN cd /usr/local && curl -sSL https://www.eiffel.org/setup/install.sh | bash -s 18.07.101981
+RUN cd /usr/local && curl -sSL https://www.eiffel.org/setup/install.sh | bash -s --channel 19.05.103187 --install-dir /usr/local/eiffel
 
 # Define Eiffel environment variables
-ENV ISE_EIFFEL=/usr/local/Eiffel_18.07 \
+ENV ISE_EIFFEL=/usr/local/eiffel \
     ISE_PLATFORM=linux-x86-64
 ENV ISE_LIBRARY=$ISE_EIFFEL \
     PATH=$PATH:$ISE_EIFFEL/studio/spec/$ISE_PLATFORM/bin:$ISE_EIFFEL/tools/spec/$ISE_PLATFORM/bin:$ISE_EIFFEL/library/gobo/spec/$ISE_PLATFORM/bin:$ISE_EIFFEL/esbuilder/spec/$ISE_PLATFORM/bin
