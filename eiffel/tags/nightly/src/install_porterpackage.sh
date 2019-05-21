@@ -24,28 +24,10 @@ get_porterpackage () {
 	curl -s -L $l_url | tar x -C $l_build_dir
 }
 
-fix_runtime () {
-	t_old_cwd=`pwd`
-	t_pp_dir=$1
-
-	cd $t_pp_dir
-	echo "Fix Eiffel runtime, by replacing sys_siglist[sig] by strsignal(sig)"
-	
-	\rm -rf C
-	tar xjvf c.tar.bz2
-	sed "s/sys_siglist\[\(..*\)]/strsignal(\1)/g" C/run-time/sig.c > C/run-time/sig.c.new && mv C/run-time/sig.c.new C/run-time/sig.c
-	tar cjvf c.tar.bz2 C/*
-	\rm -rf C
-
-	echo Eiffel runtime fixed.
-	cd $t_old_cwd
-}
-
 mkdir -p $t_eif_build_dir
 cd $t_eif_build_dir
 
 get_porterpackage $t_porterpackage_url $t_eif_build_dir
-fix_runtime $t_eif_build_dir/PorterPackage
 
 cd PorterPackage
 
