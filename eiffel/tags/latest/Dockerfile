@@ -7,11 +7,13 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         gcc make \
         libxtst-dev \
         libgtk2.0-dev \
+        libgtk-3-dev \
+        libgdk-pixbuf2.0-dev \
         libssl-dev \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
-RUN cd /usr/local && curl -sSL https://www.eiffel.org/setup/install.sh | bash -s -- --channel latest --install-dir /usr/local/eiffel
+RUN cd /usr/local && curl -sSL https://www.eiffel.org/setup/install.sh | bash -s -- --channel 21.11.106046 --install-dir /usr/local/eiffel
 
 # Define Eiffel environment variables
 ENV ISE_EIFFEL=/usr/local/eiffel \
