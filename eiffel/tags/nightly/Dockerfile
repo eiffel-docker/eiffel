@@ -7,10 +7,13 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         gcc make \
         libxtst-dev \
         libgtk2.0-dev \
+        libgtk-3-dev \
+        libgdk-pixbuf2.0-dev \
         libssl-dev \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
+ENV USER_UID=1000 USER_GID=1000
 
 # Define Eiffel environment variables
 ENV	ISE_EIFFEL=/usr/local/eiffel \
@@ -21,7 +24,7 @@ ENV	ISE_LIBRARY=$ISE_EIFFEL \
 ADD ./src/install_porterpackage.sh /tmp/install_porterpackage.sh
 RUN /bin/bash /tmp/install_porterpackage.sh $ISE_PLATFORM /home/eiffel/build $ISE_EIFFEL
 
-RUN export uid=1000 gid=1000 && \
+RUN export uid=${USER_UID} gid=${USER_GID} && \
     mkdir -p /home/eiffel && \
     echo "eiffel:x:${uid}:${gid}:eiffel,,,:/home/eiffel:/bin/bash" >> /etc/passwd && \
     echo "eiffel:x:${uid}:" >> /etc/group && \
