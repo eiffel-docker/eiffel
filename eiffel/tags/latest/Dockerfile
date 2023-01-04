@@ -13,7 +13,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
-RUN cd /usr/local && curl -sSL https://www.eiffel.org/setup/install.sh | bash -s -- --channel latest --install-dir /usr/local/eiffel
+RUN cd /usr/local && curl -sSL https://www.eiffel.org/setup/install.sh | bash -s -- --channel 22.12.106463 --install-dir /usr/local/eiffel
 
 ENV USER_UID=1000 USER_GID=1000
 
