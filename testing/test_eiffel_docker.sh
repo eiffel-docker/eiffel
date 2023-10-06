@@ -1,9 +1,37 @@
 #!/bin/bash
 
 tmp_docker_name=eiffel/eiffel
+docker_container_command=/tmp/BIN/.build.sh
+docker_container_opts=
+tmp_user_line="--env USER_UID=$(id -u ${USER}) --env USER_GID=$(id -g ${USER}) -u $(id -u ${USER}):$(id -g ${USER})"
 
-#docker build -f ../eiffel/tags/latest/Dockerfile -t local/eiffel .
-#tmp_docker_name=local/eiffel
+while [ -n "$1" ]
+do
+	case "$1" in
+		local)
+			docker build -f ../eiffel/tags/latest/Dockerfile -t local/eiffel .
+			tmp_docker_name=local/eiffel
+			;;
+		shell)
+			docker_container_command=/bin/bash
+			;;
+		gui)
+			docker_container_opts="-v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=$DISPLAY -h $HOSTNAME -v $HOME/.Xauthority:/home/eiffel/.Xauthority"
+			;;
+		studio)
+			docker_container_opts="-v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=$DISPLAY -h $HOSTNAME -v $HOME/.Xauthority:/home/eiffel/.Xauthority"
+			docker_container_command=estudio
+			;;
+		root)
+			tmp_user_line="-u root"
+			;;
+		*)
+			docker_container_command=$1
+			;;
+	esac
+	shift
+done
+
 
 tmp_cwd=`pwd`
 tmp_bin=${tmp_cwd}/BIN
@@ -49,8 +77,6 @@ EndOfScript
 chmod a+x ${tmp_bin}/.build.sh
 
 docker run --rm -it \
-	--env USER_UID=$(id -u ${USER}) \
-	--env USER_GID=$(id -g ${USER}) \
 	-v `pwd`/test_src:/tmp/SRC \
 	-v ${tmp_bin}:/tmp/BIN \
 	--env APP_ECF=/tmp/SRC/testing.ecf \
@@ -58,8 +84,10 @@ docker run --rm -it \
 	--env APP_BIN=/tmp/BIN \
 	--env APP_LOG=/tmp/BIN \
 	--env IS_VERBOSE="true" \
-	-u $(id -u ${USER}):$(id -g ${USER}) \
-	$tmp_docker_name /tmp/BIN/.build.sh
+	-v /tmp:/tmp \
+	$tmp_user_line \
+	$docker_container_opts \
+	$tmp_docker_name $docker_container_command
 
 	#--env ONLY_F_CODE="true" \
 
