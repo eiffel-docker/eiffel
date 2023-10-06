@@ -54,6 +54,7 @@ RUN curl -fsSL --output /tmp/dotnet-install.sh https://dot.net/v1/dotnet-install
 	&& /tmp/dotnet-install.sh --version latest --channel ${DOTNET_VERSION} \
 		--install-dir ${DOTNET_ROOT} \
 	&& ln -s ${DOTNET_ROOT}/dotnet /usr/bin/dotnet \
+	&& echo export DOTNET_CLI_TELEMETRY_OPTOUT=1 >> /home/eiffel/.bashrc \
 	&& echo export DOTNET_ROOT=$DOTNET_ROOT >> /home/eiffel/.bashrc \
 	&& echo export PATH=\$PATH:\$DOTNET_ROOT:\$DOTNET_ROOT/tools >> /home/eiffel/.bashrc
 
