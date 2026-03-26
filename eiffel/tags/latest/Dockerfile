@@ -1,4 +1,4 @@
-FROM debian:latest
+FROM debian:trixie
 MAINTAINER Jocelyn Fiat
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
@@ -8,7 +8,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         libxtst-dev \
         libgtk2.0-dev \
         libgtk-3-dev \
-        libgdk-pixbuf2.0-dev \
+        libgdk-pixbuf-2.0-dev \
         libssl-dev \
         sudo vim \
     && apt-get clean \
