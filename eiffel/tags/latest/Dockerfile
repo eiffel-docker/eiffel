@@ -15,7 +15,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
 
 # Install latest EiffelStudio
-RUN cd /usr/local && curl -sSL https://www.eiffel.org/setup/install.sh | bash -s -- --channel 25.12.98922 --install-dir /usr/local/eiffel
+RUN cd /usr/local && curl -sSL https://www.eiffel.org/setup/install.sh | bash -s -- --channel 26.09.99100 --install-dir /usr/local/eiffel
 
 ENV USER_UID=1000 USER_GID=1000
 
